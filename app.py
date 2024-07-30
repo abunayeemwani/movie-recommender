@@ -8,7 +8,6 @@ movies_dict = pickle.load(open('./movies.pkl', 'rb'))
 movies_df = pd.DataFrame(movies_dict)
 
 def fetch_data(id):
-    print(id)
     # url = f'https://api.themoviedb.org/3/movie/{id}?api_key=0cc7f1cc7477b88d1d8560dc5241e4c6&language=en-US'
     url = f'https://api.themoviedb.org/3/movie/{id}?language=en-US'
     
@@ -25,9 +24,7 @@ def fetch_data(id):
     try:
         response = requests.get(url, headers=headers, proxies=proxies)
         response.raise_for_status()
-        print("Response:", response)
         data = response.json()
-        print("Data:", data)
         
         return {
             "title": data['title'],
@@ -72,21 +69,21 @@ if st.button('Recommend'):
     col1, col2, col3 ,col4, col5 = st.columns(5)
 
     with col1:
-        st.image(movies[0]['title'])
-        st.markdown(movies[0]['poster_path'])
+        st.image(movies[0]['poster_path'])
+        st.markdown(movies[0]['title'])
 
     with col2:
-        st.image(movies[1]['title'])
-        st.markdown(movies[1]['poster_path'])
+        st.image(movies[1]['poster_path'])
+        st.markdown(movies[1]['title'])
 
     with col3:
-        st.image(movies[2]['title'])
-        st.markdown(movies[2]['poster_path'])
+        st.image(movies[2]['poster_path'])
+        st.markdown(movies[2]['title'])
         
     with col4:
-        st.image(movies[3]['title'])
-        st.markdown(movies[3]['poster_path'])
+        st.image(movies[3]['poster_path'])
+        st.markdown(movies[3]['title'])
         
     with col5:
-        st.image(movies[4]['title'])
-        st.markdown(movies[4]['poster_path'])
+        st.image(movies[4]['poster_path'])
+        st.markdown(movies[4]['title'])
